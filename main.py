@@ -72,7 +72,7 @@ def home():
 @app.route('/login')
 def login():
     session['next_url'] = request.args.get('next') or request.referrer or None
-    redirect_uri = url_for('callback', _external=True)
+    redirect_uri = url_for('callback', _external=True, _scheme='https')
     return github.authorize_redirect(redirect_uri)
 
 @app.route('/callback')
